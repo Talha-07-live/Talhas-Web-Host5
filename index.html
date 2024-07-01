@@ -43,7 +43,7 @@
 
       if (Hls.isSupported()) {
         var hls = new Hls();
-        hls.loadSource('https://sonydaimenew.akamaized.net/hls/live/2022317/MA03-V3/master_mdh.m3u8?hdnea=st=1719858170~exp=1719858470~acl=*~id=0396a2f4-01bc-4556-9389-2695c4989bd1~hmac=400d80c1f6a8159026f66b109aea04ec189c99b25205a4c6cb1ceafc662a68bd&originpath=/linear/hls/pb/event/oZNVxALASVyYS4HMtTpRCw/stream/44c14b30-98d3-4247-aec7-74f789c2fadc:SIN2/master.m3u8';
+        hls.loadSource('https://sonydaimenew.akamaized.net/hls/live/2022317/MA03-V3/master_mdh.m3u8?hdnea=st=1719858170~exp=1719858470~acl=*~id=0396a2f4-01bc-4556-9389-2695c4989bd1~hmac=400d80c1f6a8159026f66b109aea04ec189c99b25205a4c6cb1ceafc662a68bd&originpath=/linear/hls/pb/event/oZNVxALASVyYS4HMtTpRCw/stream/44c14b30-98d3-4247-aec7-74f789c2fadc:SIN2/master.m3u8');
         hls.attachMedia(video);
 
         hls.on(Hls.Events.MANIFEST_PARSED, function() {
