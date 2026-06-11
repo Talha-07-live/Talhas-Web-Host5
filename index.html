@@ -44,17 +44,6 @@
     <div id="player"></div>
 
     <script>
-        // Function to validate embedding
-        function isValidEmbed() {
-            const referrer = document.referrer;
-            // Add allowed domains here
-            const allowedDomains = ["https://talhas2.footballl.rf.gd/", "https://t.talhasstream-football-2.000.pe/"];
-            return allowedDomains.some(domain => referrer.includes(domain));
-        }
-
-        if (!isValidEmbed()) {
-            document.body.innerHTML = '<h1>চুরি করা মহাপাপ(By Order Of Talha, The Creator Of This Page)</h1><p></p>';
-        } else {
             jwplayer.key = 'EP3tanOyfjurKgiA7KLnzMTekvDl1Wr14XmAOqNBk3eDc3Yyao+866DfCQaHUofh';
 
             function setupPlayer(videoUrls, drmOptions = null, posterUrl = null) {
