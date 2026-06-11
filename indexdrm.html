@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Talha's DRM Player</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+  <style>
+    body, html { margin:0; padding:0; width:100%; height:100%; background:#000; }
+    #player { width:100%; height:100%; }
+    #bufferBarContainer {
+      position: absolute; bottom: 50px; left: 5%;
+      width: 90%; height: 6px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px; overflow: hidden; z-index: 9999;
+    }
+    #bufferBar { height:100%; width:0%; background: limegreen; transition: width 0.3s linear; }
+  </style>
+</head>
+<body>
+  <div id="player"></div>
+  <div id="bufferBarContainer"><div id="bufferBar"></div></div>
+
+  <script>
+    jwplayer.key = "EP3tanOyfjurKgiA7KLnzMTekvDl1Wr14XmAOqNBk3eDc3Yyao+866DfCQaHUofh";
+
+    const player = jwplayer("player").setup({
+      playlist: [{
+        title: "Talha's DRM Stream",
+        description: "DASH + ClearKey DRM",
+        image: "https://s11.gifyu.com/images/S1l3T.jpg",
+        sources: [
+          {
+            file: "https://premierleagpl23.akamaized.net/hls/live/2107108/tapmad-P2s6L_FiN@L-UrU/master.m3u8",
+            type: "dash",
+            label: "DASH 1080p",
+            drm: {
+              clearkey: {
+                keyId: "10f1ae233d0c71e9e2399260d2e399b6",
+                key: "4f8c997d1458ccb090e37f09e602afb6"
+              }
+            }
+          }
+        ]
+      }],
+      width: "100%",
+      height: "100%",
+      controls: true,
+      displaytitle: true,
+      displaydescription: true,
+      skin: { name: "netflix" },
+      dvr: true,
+      bufferlength: 30,
+      hlsjsConfig: {
+        liveSyncDuration: 0,
+        liveMaxLatencyDuration: 120
+      }
+    });
+
+    // Buffer bar update
+    player.on("bufferChange", function(e) {
+      document.getElementById("bufferBar").style.width = e.percent + "%";
+    });
+
+    // Add forward/backward buttons
+    player.on("ready", function() {
+      const container = player.getContainer();
+      const buttonContainer = container.querySelector(".jw-button-container");
+      const rewindBtn = buttonContainer.querySelector(".jw-icon-rewind");
+
+      // Clone rewind for forward
+      const forwardBtn = rewindBtn.cloneNode(true);
+      forwardBtn.style.transform = "scaleX(-1)";
+      forwardBtn.ariaLabel = "Forward 10 Seconds";
+      rewindBtn.parentNode.insertBefore(forwardBtn, rewindBtn.nextElementSibling);
+
+      // Click actions
+      rewindBtn.onclick = () => player.seek(player.getPosition() - 10);
+      forwardBtn.onclick = () => player.seek(player.getPosition() + 10);
+    });
+  </script>
+</body>
+</html>
