@@ -6,16 +6,18 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
   <style>
-    html, body {
+    body, html {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
+      overflow: hidden;
     }
     #player {
-      width: 100%;
-      height: 100%;
-    }
+      position: absolute;
+      width: 100% !important;
+      height: 100% !important;
+      background-color: #000;
 
     /* Buffer bar design */
     #bufferBarContainer {
@@ -50,7 +52,7 @@
         description: "Universal HLS/DASH Player",
         image: "https://s11.gifyu.com/images/S1l3T.jpg",
         sources: [
-          { file: "https://premierleagpl23.akamaized.net/hls/live/2107108/tapmad-P2s6L_FiN@L-UrU/master.m3u8", type: "hls", label: "HLS 1080p", default: true },
+          { file: "https://backend.footfytv.live/proxy/direct?url=https%3A%2F%2Ft7.ultrastream.vip%2Fsporttv2%2Ftracks-v2a1%2F2026%2F06%2F11%2F17%2F14%2F22-03000.ts&Referer=https%3A%2F%2Ffoottime.top%2F", type: "hls", label: "HLS 1080p", default: true },
           { file: "https://example.com/video.mpd", type: "dash", label: "DASH 1080p" }
         ]
       }],
